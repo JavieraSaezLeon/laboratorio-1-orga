@@ -1,6 +1,5 @@
 .data 
 display: .word 0:131072
-serpiente: .word
 mapa:.word 1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,
 	   1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
 	   1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -79,8 +78,6 @@ jal pintar
 j sumaForC
 
 pcabeza:
-#la $a3,serpiente
-#sw $t0,0($a3)
 la $a0, cabeza
 la $a1, display
 add $s0, $t4, $zero
@@ -163,9 +160,7 @@ moverArriba:
 add $s1,$zero,0
 add $s2,$zero,2
 la $a2,mapa
-#la $a3,serpiente
 add $t0,$a2,$zero
-#j mover
 lw $t1,0($t0) #posicion display
 add $t3,$zero,$zero #filas
 j forFilasM
@@ -189,7 +184,6 @@ finforFilasM:
 jr $ra
 
 mover:
-
 sw $s1,0($t0)
 sub $t0,$t0,128
 sw $s2,0($t0)
